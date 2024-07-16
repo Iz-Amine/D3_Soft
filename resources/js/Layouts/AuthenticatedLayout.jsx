@@ -11,7 +11,6 @@ export default function Authenticated({ user, header, children }) {
 
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-            
             <div className="flex min-h-screen">
             <div className="w-64 bg-white text-white">
                     <SideBar />
@@ -114,6 +113,7 @@ export default function Authenticated({ user, header, children }) {
                     </div>
                 </div>
             </nav>
+
                     {header && (
                         <header className="bg-white dark:bg-gray-800 shadow">
                             <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
@@ -123,7 +123,7 @@ export default function Authenticated({ user, header, children }) {
                 </div>
             </div>
 
-            
+
         </div>
     );
 }

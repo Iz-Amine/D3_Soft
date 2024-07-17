@@ -25,6 +25,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/projet', [ProjetController::class, 'add'])->name('projet.add');
 });
 
+Route::get('/Roles_Permission', function () {
+    return Inertia::render('Roles_Permission');
+})->middleware(['auth', 'verified'])->name('Roles_Permission');
+
+Route::get('/Add', function () {
+    return Inertia::render('Add');
+})->middleware(['auth', 'verified'])->name('Add');
 
 Route::get('/Test', function () {
     return Inertia::render('Test');

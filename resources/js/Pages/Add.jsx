@@ -1,7 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Add({}){
+export default function Add({auth}){
     return(
         <AuthenticatedLayout
         user={auth.user}

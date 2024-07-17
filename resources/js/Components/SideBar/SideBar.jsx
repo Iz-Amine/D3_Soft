@@ -25,12 +25,10 @@ import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export function SideBar() {
     const [open, setOpen] = React.useState(0);
-    
 
     const handleOpen = (value) => {
         setOpen(open === value ? 0 : value);
     };
-
 
     return (
         <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
@@ -169,12 +167,14 @@ export function SideBar() {
                         />
                     </ListItemSuffix>
                 </ListItem>
-                <ListItem>
-                    <ListItemPrefix>
-                        <UserCircleIcon className="h-5 w-5" />
-                    </ListItemPrefix>
-                    <Link href={route('profile.edit')}>Profile</Link>
-                </ListItem>
+                <Link href={route("profile.edit")}>
+                    <ListItem>
+                        <ListItemPrefix>
+                            <UserCircleIcon className="h-5 w-5" />
+                        </ListItemPrefix>
+                        Profile
+                    </ListItem>
+                </Link>
                 <ListItem>
                     <ListItemPrefix>
                         <Cog6ToothIcon className="h-5 w-5" />
@@ -185,10 +185,11 @@ export function SideBar() {
                     <ListItemPrefix>
                         <PowerIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                   
-                    <Link  href={route('logout')}>Log Out</Link>
-                    
+
+                    <Link href={route("logout")} method="post" as="button">Log Out</Link>
                 </ListItem>
+             
+                  
             </List>
         </Card>
     );

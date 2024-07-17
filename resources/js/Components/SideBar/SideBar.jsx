@@ -16,6 +16,7 @@ import {
 import {
     PresentationChartBarIcon,
     ShoppingBagIcon,
+    HomeModernIcon,
     UserCircleIcon,
     Cog6ToothIcon,
     InboxIcon,
@@ -170,7 +171,7 @@ export function SideBar() {
                 <Link href={route("profile.edit")}>
                     <ListItem>
                         <ListItemPrefix>
-                            <UserCircleIcon className="h-5 w-5" />
+                            <UserCircleIcon class="h-5 w-5" />
                         </ListItemPrefix>
                         Profile
                     </ListItem>
@@ -181,6 +182,14 @@ export function SideBar() {
                     </ListItemPrefix>
                     Settings
                 </ListItem>
+                <Link href={route("projet.add")}>
+                <ListItem>
+                    <ListItemPrefix>
+                         <HomeModernIcon class="h-5 w-5" />
+                    </ListItemPrefix>
+                    Projet
+                </ListItem>
+                </Link>
                 <ListItem>
                     <ListItemPrefix>
                         <PowerIcon className="h-5 w-5" />
@@ -188,8 +197,7 @@ export function SideBar() {
 
                     <Link href={route("logout")} method="post" as="button">Log Out</Link>
                 </ListItem>
-             
-                  
+                    
             </List>
         </Card>
     );

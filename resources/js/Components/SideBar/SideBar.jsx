@@ -25,7 +25,7 @@ import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export function SideBar() {
     const [open, setOpen] = React.useState(0);
-    
+
 
     const handleOpen = (value) => {
         setOpen(open === value ? 0 : value);
@@ -50,9 +50,8 @@ export function SideBar() {
                     icon={
                         <ChevronDownIcon
                             strokeWidth={2.5}
-                            className={`mx-auto h-4 w-4 transition-transform ${
-                                open === 1 ? "rotate-180" : ""
-                            }`}
+                            className={`mx-auto h-4 w-4 transition-transform ${open === 1 ? "rotate-180" : ""
+                                }`}
                         />
                     }
                 >
@@ -74,15 +73,17 @@ export function SideBar() {
                     </ListItem>
                     <AccordionBody className="py-1">
                         <List className="p-0">
-                            <ListItem>
-                                <ListItemPrefix>
-                                    <ChevronRightIcon
-                                        strokeWidth={3}
-                                        className="h-3 w-5"
-                                    />
-                                </ListItemPrefix>
-                                Analytics
-                            </ListItem>
+                            <Link href={route('dashboard')}>
+                                <ListItem>
+                                    <ListItemPrefix>
+                                        <ChevronRightIcon
+                                            strokeWidth={3}
+                                            className="h-3 w-5"
+                                        />
+                                    </ListItemPrefix>
+                                    Analytics
+                                </ListItem>
+                            </Link>
                             <ListItem>
                                 <ListItemPrefix>
                                     <ChevronRightIcon
@@ -109,9 +110,8 @@ export function SideBar() {
                     icon={
                         <ChevronDownIcon
                             strokeWidth={2.5}
-                            className={`mx-auto h-4 w-4 transition-transform ${
-                                open === 2 ? "rotate-180" : ""
-                            }`}
+                            className={`mx-auto h-4 w-4 transition-transform ${open === 2 ? "rotate-180" : ""
+                                }`}
                         />
                     }
                 >
@@ -154,27 +154,22 @@ export function SideBar() {
                         </List>
                     </AccordionBody>
                 </Accordion>
-                <ListItem>
-                    <ListItemPrefix>
-                        <InboxIcon className="h-5 w-5" />
-                    </ListItemPrefix>
-                    Inbox
-                    <ListItemSuffix>
-                        <Chip
-                            value="14"
-                            size="sm"
-                            variant="ghost"
-                            color="blue-gray"
-                            className="rounded-full"
-                        />
-                    </ListItemSuffix>
-                </ListItem>
-                <ListItem>
-                    <ListItemPrefix>
-                        <UserCircleIcon className="h-5 w-5" />
-                    </ListItemPrefix>
-                    <Link href={route('profile.edit')}>Profile</Link>
-                </ListItem>
+                <Link href={route('Roles_Permission')}>
+                    <ListItem>
+                        <ListItemPrefix>
+                            <i class="fa-solid fa-gavel"></i>
+                        </ListItemPrefix>
+                        Roles & Permissions
+                    </ListItem>
+                </Link>
+                <Link href={route('profile.edit')}>
+                    <ListItem>
+                        <ListItemPrefix>
+                            <UserCircleIcon className="h-5 w-5" />
+                        </ListItemPrefix>
+                        Profile
+                    </ListItem>
+                </Link>
                 <ListItem>
                     <ListItemPrefix>
                         <Cog6ToothIcon className="h-5 w-5" />
@@ -185,9 +180,9 @@ export function SideBar() {
                     <ListItemPrefix>
                         <PowerIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                   
-                    <Link  href={route('logout')}>Log Out</Link>
-                    
+
+                    <Link href={route('logout')} method="post" as="button">Log Out</Link>
+
                 </ListItem>
             </List>
         </Card>

@@ -24,6 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/Roles_Permission', function () {
+    return Inertia::render('Roles_Permission');
+})->middleware(['auth', 'verified'])->name('Roles_Permission');
 
 Route::get('/Test', function () {
     return Inertia::render('Test');

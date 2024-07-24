@@ -154,12 +154,20 @@ export function SideBar() {
                         </List>
                     </AccordionBody>
                 </Accordion>
-                <Link href={route('Roles_Permission')}>
+                <Link href={route('roles')}>
                     <ListItem>
                         <ListItemPrefix>
                             <i class="fa-solid fa-gavel"></i>
                         </ListItemPrefix>
                         Roles & Permissions
+                    </ListItem>
+                </Link>
+                <Link href={route('roles')}>
+                    <ListItem>
+                        <ListItemPrefix>
+                            <i class="fa-solid fa-users"></i>
+                        </ListItemPrefix>
+                        Users
                     </ListItem>
                 </Link>
                 <Link href={route('profile.edit')}>

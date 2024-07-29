@@ -20,13 +20,13 @@ export default function CreateRole({ permissions }) {
     const [selectedPermissions, setSelectedPermissions] = useState({});
     const [roleName, setRoleName] = useState('');
 
-    // Convert permissions to an array and group by Model_group
+    // Convert permissions to an array and group by group
     const permissionsArray = Object.values(permissions).flat();
-    const groupedPermissions = permissionsArray.reduce((acc, { name, Model_group }) => {
-        if (!acc[Model_group]) {
-            acc[Model_group] = [];
+    const groupedPermissions = permissionsArray.reduce((acc, { name, group }) => {
+        if (!acc[group]) {
+            acc[group] = [];
         }
-        acc[Model_group].push(name);
+        acc[group].push(name);
         return acc;
     }, {});
 

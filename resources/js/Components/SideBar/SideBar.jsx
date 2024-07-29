@@ -162,7 +162,7 @@ export function SideBar() {
                         Roles & Permissions
                     </ListItem>
                 </Link>
-                <Link href={route('roles')}>
+                <Link href={route('users')}>
                     <ListItem>
                         <ListItemPrefix>
                             <i class="fa-solid fa-users"></i>

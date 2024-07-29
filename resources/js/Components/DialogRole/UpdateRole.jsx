@@ -32,10 +32,10 @@ export default function UpdateRole({ roleId, open, setOpen, permissions }) {
 
                     setRoleName(role.name);
 
-                    // Group role permissions by Model_group and count permissions for each group
+                    // Group role permissions by group and count permissions for each group
                     const groupedRolePermissions = role.permissions.reduce((acc, perm) => {
                         if (typeof perm === 'object' && perm.name) {
-                            const group = perm.Model_group;
+                            const group = perm.group;
                             if (!acc[group]) {
                                 acc[group] = { permissions: [], count: 0 };
                             }
@@ -55,12 +55,12 @@ export default function UpdateRole({ roleId, open, setOpen, permissions }) {
     useEffect(() => {
         if (permissions) {
             const permissionsArray = Object.values(permissions).flat();
-            const grouped = permissionsArray.reduce((acc, { name, Model_group }) => {
-                if (!acc[Model_group]) {
-                    acc[Model_group] = { names: [], count: 0 };
+            const grouped = permissionsArray.reduce((acc, { name, group }) => {
+                if (!acc[group]) {
+                    acc[group] = { names: [], count: 0 };
                 }
-                acc[Model_group].names.push(name);
-                acc[Model_group].count = acc[Model_group].names.length;
+                acc[group].names.push(name);
+                acc[group].count = acc[group].names.length;
                 return acc;
             }, {});
 
@@ -145,8 +145,8 @@ export default function UpdateRole({ roleId, open, setOpen, permissions }) {
 
     return (
         <>
-            <Tooltip content="Edit Role" placement="top">
-                <IconButton variant="text" color="blue-gray" onClick={handleOpen}>
+            <Tooltip content="Edit Role">
+                <IconButton variant="text" onClick={handleOpen}>
                     <PencilIcon className="h-4 w-4" />
                 </IconButton>
             </Tooltip>

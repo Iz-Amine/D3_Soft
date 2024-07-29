@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -44,7 +45,31 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/role/update/{role}', [RoleController::class, 'update'])->name('role.update');
 
     // Supprimer un rôle
-    Route::delete('/role/{id}', [RoleController::class, 'destroy'])->name('role.destroy'); 
+    Route::delete('/role/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
+});
+
+
+
+
+// Routes pour la gestion des utilisateurs
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Afficher la liste des utilisateurs
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+
+    // Créer un nouvel utilisateur
+    Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+
+    // Afficher un utilisateur spécifique
+    Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
+
+    // Mettre à jour un utilisateur existant
+    Route::post('/user/update/{user}', [UserController::class, 'update'])->name('user.update');
+
+    // Supprimer un utilisateur
+    Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+
+    // Restore a soft deleted user
+    Route::post('/user/restore/{id}', [UserController::class, 'restore'])->name('user.restore');
 });
 
 
@@ -61,4 +86,4 @@ Route::get('/Test', function () {
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

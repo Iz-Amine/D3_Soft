@@ -18,9 +18,9 @@ import {
     Tooltip,
     IconButton,
 } from "@material-tailwind/react";
-import UpdateRole from '@/Components/Dialog/UpdateRole';
+import UpdateRole from '@/Components/DialogRole/UpdateRole';
 import { Inertia } from "@inertiajs/inertia";
-import CreateRole from '@/Components/Dialog/CreateRole';
+import CreateRole from '@/Components/DialogRole/CreateRole';
 
 const TABS = [
     {

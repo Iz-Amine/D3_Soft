@@ -16,21 +16,22 @@ import {
 import {
     PresentationChartBarIcon,
     ShoppingBagIcon,
-    HomeModernIcon,
     UserCircleIcon,
     Cog6ToothIcon,
     InboxIcon,
+    HomeModernIcon,
     PowerIcon,
 } from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export function SideBar() {
     const [open, setOpen] = React.useState(0);
-    
+
 
     const handleOpen = (value) => {
         setOpen(open === value ? 0 : value);
     };
+
 
     return (
         <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
@@ -154,50 +155,106 @@ export function SideBar() {
                         </List>
                     </AccordionBody>
                 </Accordion>
-                <ListItem>
+                <Link href={route('Roles_Permission')}>
+                    <ListItem>
+                        <ListItemPrefix>
+                            <i class="fa-solid fa-gavel"></i>
+                        </ListItemPrefix>
+                        Roles & Permissions
+                    </ListItem>
+                </Link>
+                <Link href={route('profile.edit')}>
+                    <ListItem>
+                        <ListItemPrefix>
+                            <UserCircleIcon className="h-5 w-5" />
+                        </ListItemPrefix>
+                        Profile
+                    </ListItem>
+                </Link>
+                
+                
+                <Accordion
+            open={open === 3}
+            icon={
+                <ChevronDownIcon
+                    strokeWidth={2.5}
+                    className={`mx-auto h-4 w-4 transition-transform ${open === 3 ? "rotate-180" : ""}`}
+                />
+            }
+        >
+            <ListItem className="p-0" selected={open === 3}>
+                <AccordionHeader
+                    onClick={() => handleOpen(3)}
+                    className="border-b-0 p-3"
+                >
                     <ListItemPrefix>
-                        <InboxIcon className="h-5 w-5" />
+                        <ShoppingBagIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                    Inbox
-                    <ListItemSuffix>
-                        <Chip
-                            value="14"
-                            size="sm"
-                            variant="ghost"
-                            color="blue-gray"
-                            className="rounded-full"
-                        />
-                    </ListItemSuffix>
-                </ListItem>
+                    <Typography
+                        color="blue-gray"
+                        className="mr-auto font-normal"
+                    >
+                        Paramétrage
+                    </Typography>
+                </AccordionHeader>
+            </ListItem>
+            <AccordionBody className="py-1">
+                <List className="p-0">
+                <Link href={route("project.index")}>
                 <ListItem>
-                    <ListItemPrefix>
-                        <UserCircleIcon className="h-5 w-5" />
-                    </ListItemPrefix>
-                    <Link href={route('profile.edit')}>Profile</Link>
+                <ListItemPrefix>
+                            <ChevronRightIcon
+                                strokeWidth={3}
+                                className="h-3 w-5"
+                            />
+                        </ListItemPrefix>
+                    Projet
                 </ListItem>
+                </Link>
+                <Link href={route("blocs.index")}>
+                                <ListItem>
+                                    <ListItemPrefix>
+                                        <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                                    </ListItemPrefix>
+                                    Bloc
+                                </ListItem>
+                            </Link>
+                    <ListItem>
+                        <ListItemPrefix>
+                            <ChevronRightIcon
+                                strokeWidth={3}
+                                className="h-3 w-5"
+                            />
+                        </ListItemPrefix>
+                        Residence
+                    </ListItem>
+                    <ListItem>
+                        <ListItemPrefix>
+                            <ChevronRightIcon
+                                strokeWidth={3}
+                                className="h-3 w-5"
+                            />
+                        </ListItemPrefix>
+                        Bien
+                    </ListItem>
+                </List>
+            </AccordionBody>
+        </Accordion>
+
                 <ListItem>
                     <ListItemPrefix>
                         <Cog6ToothIcon className="h-5 w-5" />
                     </ListItemPrefix>
                     Settings
                 </ListItem>
-                <Link href={route("projet.add")}>
-                <ListItem>
-                    <ListItemPrefix>
-                         <HomeModernIcon class="h-5 w-5" />
-                    </ListItemPrefix>
-                    Projet
-                </ListItem>
-                </Link>
                 <ListItem>
                     <ListItemPrefix>
                         <PowerIcon className="h-5 w-5" />
                     </ListItemPrefix>
-                   
-                    <Link  href={route('logout')}>Log Out</Link>
-                    
+
+                    <Link href={route('logout')} method="post" as="button">Log Out</Link>
+
                 </ListItem>
-                    
             </List>
         </Card>
     );

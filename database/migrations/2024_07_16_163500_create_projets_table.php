@@ -11,10 +11,11 @@ class CreateProjetsTable extends Migration
         Schema::create('projets', function (Blueprint $table) {
             $table->id('idProjet');
             $table->string('nomProjet');
-            $table->text('description')->nullable();
+            $table->string('description')->nullable();
             $table->string('adresse')->nullable();
-            $table->double('superficieTotale')->nullable();
-            $table->json('documents')->nullable();
+            $table->string('superficieTotale')->nullable();
+            $table->string('documents')->nullable();
+            $table->boolean('archived')->default(false); // Ensure this column exists
             $table->timestamps();
         });
     }

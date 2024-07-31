@@ -12,13 +12,15 @@ class Projet extends Model
     protected $table = 'projets';
     
     protected $primaryKey = 'idProjet';
+    public $timestamps = false; 
 
     protected $fillable = [
         'nomProjet',
         'description',
         'adresse',
         'superficieTotale',
-        'documents'
+        'documents',
+        'archived'
     ];
 
     public function blocs()

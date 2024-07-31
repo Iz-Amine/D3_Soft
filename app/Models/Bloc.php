@@ -20,6 +20,7 @@ class Bloc extends Model
         'nombreEtages',
         'nombreAppartements',
         'superficieTotale',
+        'projetId',
     ];
 
     public function projet()

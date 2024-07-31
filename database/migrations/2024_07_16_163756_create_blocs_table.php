@@ -10,12 +10,13 @@ class CreateBlocsTable extends Migration
     {
         Schema::create('blocs', function (Blueprint $table) {
             $table->id('idBloc');
-            $table->string('nomBloc');
-            $table->text('description')->nullable();
+            $table->string('nomBloc');  
+            $table->string('description')->nullable();
+            $table->string('nombreEtages')->nullable();
+            $table->string('nombreAppartements')->nullable();
+            $table->string('superficieTotale')->nullable();
+            $table->unsignedBigInteger('projetId')->default(1)->change();
             $table->foreignId('projetId')->constrained('projets')->onDelete('cascade');
-            $table->integer('nombreEtages')->nullable();
-            $table->integer('nombreAppartements')->nullable();
-            $table->double('superficieTotale')->nullable();
             $table->timestamps();
         });
     }
